@@ -40,7 +40,7 @@ export default function SecondaryButton({
       ]}
       accessibilityRole="button"
       accessibilityState={{ disabled: isInactive, busy: loading }}
-      accessibilityLabel={label}>
+      accessibilityLabel={loading ? `${label}, đang xử lý` : label}>
       {loading ? (
         <ActivityIndicator color="#111827" />
       ) : (

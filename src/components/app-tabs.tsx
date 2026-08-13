@@ -12,29 +12,27 @@ export default function AppTabs() {
       backgroundColor={colors.background}
       indicatorColor={colors.backgroundElement}
       labelStyle={{ selected: { color: colors.text } }}>
-      {/* <NativeTabs.Trigger name="exercise-2">
+       {/* <NativeTabs.Trigger name="exercise-2">
         <NativeTabs.Trigger.Label>Exercise-2</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require("@/assets/images/tabIcons/home.png")}
           renderingMode="template"
         />
-      </NativeTabs.Trigger> */}
-      {/* <NativeTabs.Trigger name="exercise-3">
+      </NativeTabs.Trigger> 
+      <NativeTabs.Trigger name="exercise-3">
         <NativeTabs.Trigger.Label>Exercise-3</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require("@/assets/images/tabIcons/home.png")}
           renderingMode="template"
         />
-      </NativeTabs.Trigger> */}
-      {/* 
+      </NativeTabs.Trigger> 
       <NativeTabs.Trigger name="exercise-4">
         <NativeTabs.Trigger.Label>Exercise-4</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
           src={require("@/assets/images/tabIcons/home.png")}
           renderingMode="template"
         />
-      </NativeTabs.Trigger> */}
-
+      </NativeTabs.Trigger>  */}
       <NativeTabs.Trigger name="exercise-5">
         <NativeTabs.Trigger.Label>Exercise-5</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon
@@ -71,7 +69,7 @@ export default function AppTabs() {
           src={require("@/assets/images/tabIcons/home.png")}
           renderingMode="template"
         />
-      </NativeTabs.Trigger>
+      </NativeTabs.Trigger> 
     </NativeTabs>
   );
 }

@@ -13,6 +13,7 @@ export type CourseCardProps = {
   imageUrl?: string; // remote
   localImage?: number; 
   imageRole?: "informative" | "decorative"; // mặc định informative
+  onPress?: () => void;
 };
 
 export default function CourseCard({
@@ -20,6 +21,7 @@ export default function CourseCard({
   imageUrl,
   localImage,
   imageRole = "informative",
+  onPress,
 }: CourseCardProps) {
   const [status, setStatus] = useState<"loading" | "loaded" | "failed">(
     imageUrl ? "loading" : "loaded",
@@ -54,7 +56,11 @@ export default function CourseCard({
       return (
         <View style={styles.image}>
           {status === "loading" && (
-            <ActivityIndicator style={StyleSheet.absoluteFill} size="small" />
+            <ActivityIndicator
+              style={StyleSheet.absoluteFill}
+              size="small"
+              accessibilityLabel="Đang tải ảnh"
+            />
           )}
           <Image
             source={{ uri: imageUrl }}
@@ -77,7 +83,11 @@ export default function CourseCard({
   };
 
   return (
-    <Pressable style={styles.card}>
+    <Pressable
+      style={styles.card}
+      onPress={onPress}
+      accessibilityRole={onPress ? "button" : undefined}
+      accessibilityLabel={onPress ? `Xem chi tiết khóa học ${title}` : undefined}>
       {renderThumbnail()}
       {/* Task completion không phụ thuộc vào Image */}
       <Text style={styles.title}>{title}</Text>

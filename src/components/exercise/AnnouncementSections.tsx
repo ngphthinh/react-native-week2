@@ -45,9 +45,9 @@ export default function AnnouncementSections({
     <SectionList
       sections={sections}
       keyExtractor={(item) => item.id}
-      stickySectionHeadersEnabled={true}
+      stickySectionHeadersEnabled={false}
       renderSectionHeader={({ section }) => (
-        <View style={styles.sectionHeader}>
+        <View style={styles.sectionHeader} accessibilityRole="header">
           <Text style={styles.sectionHeaderText}>{section.title}</Text>
         </View>
       )}

@@ -13,6 +13,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TextInputProps,
   View,
 } from "react-native";
 
@@ -43,57 +44,26 @@ export default function ValidationFormPage() {
     });
   };
 
-  const fillCase = (
-    caseName:
-      | "spacesOnlyName"
-      | "malformedId"
-      | "badEmail"
-      | "wrongDomain"
-      | "overlongSummary",
-  ) => {
-    switch (caseName) {
-      case "spacesOnlyName":
-        setName("     ");
-        break;
-      case "malformedId":
-        setStudentId("AB12");
-        break;
-      case "badEmail":
-        setEmail("abc.gmail.com");
-        break;
-      case "wrongDomain":
-        setEmail("abc@gmail.com");
-        break;
-      case "overlongSummary":
-        setSummary("x".repeat(350));
-        break;
-    }
-  };
-
   return (
     <ScrollView
       contentContainerStyle={styles.container}
       keyboardShouldPersistTaps="handled">
       <Text style={styles.pageTitle}>Test validation copy</Text>
 
-      <Field label="Họ tên">
+      <Field label="Họ tên" error={errors.name}>
         <TextInput style={styles.input} value={name} onChangeText={setName} />
-        {errors.name && <Text style={styles.error}>{errors.name}</Text>}
       </Field>
 
-      <Field label="Mã sinh viên">
+      <Field label="Mã sinh viên" error={errors.studentId}>
         <TextInput
           style={styles.input}
           value={studentId}
           onChangeText={setStudentId}
           keyboardType="number-pad"
         />
-        {errors.studentId && (
-          <Text style={styles.error}>{errors.studentId}</Text>
-        )}
       </Field>
 
-      <Field label="Email">
+      <Field label="Email" error={errors.email}>
         <TextInput
           style={styles.input}
           value={email}
@@ -101,17 +71,17 @@ export default function ValidationFormPage() {
           keyboardType="email-address"
           autoCapitalize="none"
         />
-        {errors.email && <Text style={styles.error}>{errors.email}</Text>}
       </Field>
 
-      <Field label={`Ghi chú (${summary.length}/200 ký tự)`}>
+      <Field
+        label={`Ghi chú (${summary.length}/200 ký tự)`}
+        error={errors.summary}>
         <TextInput
           style={[styles.input, { height: 100 }]}
           value={summary}
           onChangeText={setSummary}
           multiline
         />
-        {errors.summary && <Text style={styles.error}>{errors.summary}</Text>}
       </Field>
 
       <Pressable style={styles.submitButton} onPress={runValidation}>
@@ -123,15 +93,25 @@ export default function ValidationFormPage() {
 
 function Field({
   label,
+  error,
   children,
 }: {
   label: string;
-  children: React.ReactNode;
+  error?: string;
+  children: React.ReactElement<TextInputProps>;
 }) {
   return (
     <View style={styles.field}>
       <Text style={styles.label}>{label}</Text>
-      {children}
+      {React.cloneElement(children, {
+        accessibilityLabel: label,
+        accessibilityHint: error,
+      })}
+      {error && (
+        <Text style={styles.error} accessibilityLiveRegion="polite">
+          {error}
+        </Text>
+      )}
     </View>
   );
 }

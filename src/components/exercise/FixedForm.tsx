@@ -20,13 +20,21 @@ export default function FixedForm() {
         keyboardShouldPersistTaps="handled">
         <Text style={styles.title}>Exercise 8</Text>
         <Text>Họ tên</Text>
-        <TextInput style={styles.input} />
+        <TextInput style={styles.input} accessibilityLabel="Họ tên" />
         <Text>Email</Text>
-        <TextInput style={styles.input} keyboardType="email-address" />
+        <TextInput
+          style={styles.input}
+          keyboardType="email-address"
+          accessibilityLabel="Email"
+        />
         <Text>Mã sinh viên</Text>
-        <TextInput style={styles.input} />
+        <TextInput style={styles.input} accessibilityLabel="Mã sinh viên" />
         <Text>Ghi chú</Text>
-        <TextInput style={[styles.input, { height: 100 }]} multiline />
+        <TextInput
+          style={[styles.input, { height: 100 }]}
+          multiline
+          accessibilityLabel="Ghi chú"
+        />
         <View style={{ height: 24 }} />
       </ScrollView>
     </KeyboardAvoidingView>

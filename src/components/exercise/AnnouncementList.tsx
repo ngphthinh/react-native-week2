@@ -11,9 +11,7 @@ export interface Announcement {
 const renderItem: ListRenderItem<Announcement> = ({ item }) => (
   <View style={styles.card}>
     <Text style={styles.title}>{item.title}</Text>
-    <Text style={styles.summary} numberOfLines={2}>
-      {item.summary}
-    </Text>
+    <Text style={styles.summary}>{item.summary}</Text>
     <Text style={styles.category}>{item.category}</Text>
   </View>
 );
@@ -55,7 +53,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     textAlign: "center",
-    color: "#9ca3af",
+    color: "#6b7280",
     paddingVertical: 16,
   },
   card: {
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   emptyText: {
-    color: "#9ca3af",
+    color: "#6b7280",
   },
   emptyContainer: {
     flexGrow: 1,

@@ -39,7 +39,7 @@ export default function PrimaryButton({
       ]}
       accessibilityRole="button"
       accessibilityState={{ disabled: isInactive, busy: loading }}
-      accessibilityLabel={label}>
+      accessibilityLabel={loading ? `${label}, đang xử lý` : label}>
       {loading ? (
         <ActivityIndicator color="#fff" />
       ) : (
